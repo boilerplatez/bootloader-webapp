@@ -31,7 +31,6 @@ module.exports = function(grunt) {
             },
             extfiles: {
                 files: {
-                    'src/external/spamjs-datatable/spamjs.datatable.css': 'src/external/spamjs-datatable/spamjs.datatable.scss'
                 }
             }
         },
@@ -56,7 +55,7 @@ module.exports = function(grunt) {
         bootloader: {
             options: {
                 projectPrefix: "olp", sort: false,
-                indexBundles: ["webmodules/bootloader", "olp/app"],// ["webmodules/bootloader","unicom/external","unicom/abstracts"],
+                indexBundles: ["webmodules/bootloader", "sample/app"],// ["webmodules/bootloader","unicom/external","unicom/abstracts"],
                 src: "./",
                 dest: "dist",
                 resourceJson: "dist/resource.json",
@@ -69,41 +68,18 @@ module.exports = function(grunt) {
             }
         },
         jsbeautifier: {
-            files: ["src/**/*.js", "!src/external/components/**/*.js", "!src/customerTrack//**/*.js"],
+            files: ["src/**/*.js", "!src/external/components/**/*.js"],
             options: {
                 config: ".jsbeautifyrc"
             }
         },
         jshint: {
-            files: ["src/**/*.js", "!src/external//**/*.js", "!src/customerTrack//**/*.js"],
+            files: ["src/**/*.js", "!src/external//**/*.js"],
             options: { jshintrc: true }
-        },
-        sprite: {
-            all: {
-                src: 'src/img/sprite/*.png',
-                dest: 'dist/img/sprite/olpSprite-' + new Date().getTime() + '.png',
-                destCss: 'src/scss/_olpSprite.scss',
-                padding: 10,
-                cssTemplate: 'src/img/sprite/spriteTemplate/template.handlebars'
-            }
-        },
-        webfont: {
-            icons: {
-                src: 'src/img/custom-icons/*.svg',
-                dest: 'src/fonts/',
-                destCss: 'src/fonts/style',
-                options: {
-                    font: 'icons',
-                    stylesheet: 'scss',
-                    relativeFontPath: "../../src/fonts/",
-                    htmlDemo: true,
-                    hashes: true
-                }
-            }
         },
         cssmin: {
             options: {
-                target: "WebUI/dist/style",
+                target: "bootloader-webapp/dist/style",
                 advanced: true,
                 keepSpecialComments: 0
             },
@@ -111,12 +87,7 @@ module.exports = function(grunt) {
                 files: {
                     'dist/style/library.css': [
                         'src/external/components/webmodules-bootstrap/css/bootstrap.min.css',
-                        'src/external/components/jqmodules-select2/select2.css',
-                        'src/external/components/jqmodules-bootstrap-select/dist/css/bootstrap-select.min.css',
-                        'src/external/components/font-awesome/css/font-awesome.min.css',
-                        'src/external/components/toastr/toastr.min.css',
-                        'src/external/components/datatables/media/css/jquery.dataTables.min.css',
-                        'src/external/components/datetimepicker/jquery.datetimepicker.css'
+                        'src/external/components/font-awesome/css/font-awesome.min.css'
                     ]
                 }
             }
@@ -132,23 +103,20 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-jsbeautifier');
-    grunt.loadNpmTasks('grunt-webfont');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-bootloader');
-    grunt.loadNpmTasks('grunt-spritesmith');
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-gitinfo');
 
     // Default task(s).
-    grunt.registerTask('default', ['uglify', 'webfont', 'cssmin']);
+    grunt.registerTask('default', ['uglify', 'cssmin']);
 
     // Custom task
-    grunt.registerTask('start-cdn-server', ['bootloader:server', 'watch']);
     grunt.registerTask('check', ["jshint", 'jsbeautifier']);
-    grunt.registerTask('scan', ['bootloader:scan:skip', 'webfont', 'cssmin', 'sprite', 'sass:dist',"check"]);
-    grunt.registerTask('bundlify', ['bootloader:bundlify', 'webfont', 'sprite', 'sass:dist', 'cssmin']);
-    grunt.registerTask('build', ['gitinfo','bundlify']);
-    grunt.registerTask('boot', ['start-cdn-server']);
+    grunt.registerTask('scan', ['bootloader:scan:skip', 'cssmin', 'sass:dist', "check"]);
+    grunt.registerTask('bundlify', ['bootloader:bundlify', 'sass:dist', 'cssmin']);
+    grunt.registerTask('build', ['gitinfo', 'bundlify']);
+    grunt.registerTask('boot', ['bootloader:server', 'watch']);
 
 };

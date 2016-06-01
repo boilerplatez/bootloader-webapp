@@ -1,0 +1,15 @@
+{
+    "name": "webapp",
+    "webapp/style": {
+        "css": ["../dist/style/library.css", "../dist/style/main.css"],
+        "on": ["webmodules/bootstrap/css"]
+    },
+    "webapp/main": {
+        "js": ["webapp.main.js"],
+        "on": ["webmodules/bootloader", "webmodules/underscore", "webmodules/lazy",
+            "spamjs/bootconfig", "jsutils/server", "webapp/external"]
+    },
+    "webapp/external": {
+        "on": ["webmodules/jquery", "webmodules/bootstrap/js", "webmodules/jqrouter"]
+    }
+}

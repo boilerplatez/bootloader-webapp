@@ -1,0 +1,7 @@
+{
+    "name": "webapp/services",
+    "webapp/services": {
+        "js": ["DataService.js"],
+        "on": [ "webmodules/lazy", "jsutils/server"]
+    }
+}
