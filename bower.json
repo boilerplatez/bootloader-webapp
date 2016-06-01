@@ -1,0 +1,47 @@
+{
+  "name": "olp-admin-webapp",
+  "description": "",
+  "version": "0.1.0",
+  "homepage": "",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "webmodules-bootstrap": "3.2.34",
+    "webmodules-moment": "latest",
+    "webmodules-foo": "~3.2.1",
+    "webmodules-bootloader": ">=0.1.14",
+    "webmodules-jqrouter": ">=1.1.11",
+    "webmodules-jqbus": "0.0.6",
+    "jsutils-file": ">=0.0.8",
+    "spamjs-view": "~0.1.3",
+    "spamjs-bootconfig": "0.0.15",
+    "jqtags-jq-tab": "latest",
+    "jqtags-jq-select": "latest",
+    "jqtags-jq-date": "latest",
+    "toastr": "latest",
+    "jqtags-jq-select2": "latest",
+    "webmodules-underscore": "~1.8.31",
+    "this-is-it": "~1.0.2",
+    "jq-popover": "latest",
+    "jsutils-server": "~0.0.2",
+    "spamjs-modal": "latest",
+    "webmodules-lazy": "~0.0.3",
+    "jqtags-jq-time": "^0.0.6",
+    "datetimepicker": "latest",
+    "datatables": "^1.10.11",
+    "datatables.net-rowreorder": "latest",
+    "jsutils-cache": "latest",
+    "StickyTableHeaders": "~0.1.19",
+    "jqtags-jq-label": "~0.0.0",
+    "jsutils-i18n": "~0.0.2",
+    "jsutils-resources": "~0.0.0"
+  },
+  "resolutions": {
+    "spamjs-view": "0.1.0",
+    "jsutils-file": "0.1.2",
+    "webmodules-jqtag": "0.0.7"
+  },
+  "devDependencies": {
+    "font-awesome": "fontawesome#~4.5.0"
+  }
+}

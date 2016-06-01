@@ -1,0 +1,9 @@
+.idea
+node_modules
+src/external/components
+dist
+.project
+.brackets.json
+*iml
+src/scss/_olpSprite.scss
+src/fonts/**
