@@ -54,7 +54,7 @@ module.exports = function(grunt) {
         },
         bootloader: {
             options: {
-                projectPrefix: "olp", sort: false,
+                projectPrefix: "webapp", sort: false,
                 indexBundles: ["webmodules/bootloader", "sample/app"],// ["webmodules/bootloader","unicom/external","unicom/abstracts"],
                 src: "./",
                 dest: "dist",
@@ -63,7 +63,7 @@ module.exports = function(grunt) {
                 livereloadUrl: "http://localhost:8081/livereload.js",
                 bootServer: {
                     port: 8087,
-                    indexMatch: /^\/olp\//
+                    //indexMatch: /^\/webapp\//
                 }
             }
         },
